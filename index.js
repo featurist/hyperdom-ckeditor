@@ -1,6 +1,8 @@
 var h = require('plastiq').html;
 
 module.exports = function (options) {
+  var inline = options.inline;
+
   return h.component(
     {
       binding: h.binding(options.binding),
@@ -8,7 +10,11 @@ module.exports = function (options) {
       onadd: function (element) {
         var self = this;
 
-        this.editor = CKEDITOR.replace(element, options.config);
+        if (inline) {
+          this.editor = CKEDITOR.inline(element, options.config);
+        } else {
+          this.editor = CKEDITOR.replace(element, options.config);
+        }
         this.editor.on('change', function (e) {
           if (!self.settingData) {
             self.html = e.editor.getData();
@@ -30,6 +36,8 @@ module.exports = function (options) {
         }
       }
     },
-    h('textarea')
+    inline
+      ? h('div', {contentEditable: 'true'})
+      : h('textarea')
   );
 };

@@ -4,6 +4,8 @@
 npm install plastiq-ckeditor
 ```
 
+expects to have `window.CKEDITOR` already defined.
+
 # usage
 
 ```js
@@ -24,3 +26,4 @@ var vdom = ckeditor(options);
 
 * `options.binding` - the binding to the model
 * `options.config` - [ckeditor config](http://docs.ckeditor.com/#!/api/CKEDITOR.config).
+* `options.inline` - [inline ckeditor](http://docs.ckeditor.com/#!/guide/dev_inline).
