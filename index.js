@@ -11,7 +11,6 @@ module.exports = function (options) {
         this.editor = CKEDITOR.replace(element, options.config);
         this.editor.on('change', function (e) {
           if (!self.settingData) {
-            console.log('on change');
             self.html = e.editor.getData();
             self.binding.set(self.html);
           }
