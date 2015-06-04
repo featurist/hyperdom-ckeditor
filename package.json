@@ -1,0 +1,26 @@
+{
+  "name": "plastiq-ckeditor",
+  "version": "1.0.0",
+  "description": "ckeditor component for plastiq",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/featurist/plastiq-ckeditor.git"
+  },
+  "peerDependencies": {
+    "plastiq": "*"
+  },
+  "keywords": [
+    "ckeditor",
+    "plastiq"
+  ],
+  "author": "Tim Macfarlane <timmacfarlane@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/featurist/plastiq-ckeditor/issues"
+  },
+  "homepage": "https://github.com/featurist/plastiq-ckeditor"
+}
