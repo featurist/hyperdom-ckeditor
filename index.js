@@ -3,6 +3,18 @@ var h = require('plastiq').html;
 module.exports = function (options) {
   var inline = options.inline;
 
+  var vdomOptions = {};
+
+  Object.keys(options).forEach(function (key) {
+    if (key !== 'binding' && key !== 'config' && key != 'inline') {
+      vdomOptions[key] = options[key];
+    }
+  });
+
+  if (inline) {
+    vdomOptions.contentEditable = true;
+  }
+
   return h.component(
     {
       binding: h.binding(options.binding),
@@ -37,7 +49,7 @@ module.exports = function (options) {
       }
     },
     inline
-      ? h('div', {contentEditable: 'true'})
-      : h('textarea')
+      ? h('div', vdomOptions)
+      : h('textarea', vdomOptions)
   );
 };
