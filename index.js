@@ -27,18 +27,19 @@ module.exports = function (options) {
         } else {
           this.editor = CKEDITOR.replace(element, options.config);
         }
+
         this.editor.on('change', function (e) {
           if (!self.settingData) {
             self.html = e.editor.getData();
             self.binding.set(self.html);
           }
         });
+
+        this.setHtml(this.binding.get());
       },
 
-      onupdate: function (element) {
+      setHtml: function (html) {
         var self = this;
-        var html = this.binding.get();
-
         if (html != this.html) {
           this.settingData = true;
           this.html = html;
@@ -46,6 +47,10 @@ module.exports = function (options) {
             self.settingData = false;
           });
         }
+      },
+
+      onupdate: function (element) {
+        this.setHtml(this.binding.get());
       }
     },
     inline
