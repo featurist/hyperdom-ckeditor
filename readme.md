@@ -1,7 +1,7 @@
-# plastiq-ckeditor
+# hyperdom-ckeditor
 
 ```bash
-npm install plastiq-ckeditor
+npm install hyperdom-ckeditor
 ```
 
 expects to have `window.CKEDITOR` already defined.

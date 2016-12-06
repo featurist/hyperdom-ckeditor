@@ -1,4 +1,4 @@
-var h = require('plastiq').html;
+var h = require('hyperdom').html;
 
 module.exports = function (options) {
   var inline = options.inline;
