@@ -1,4 +1,5 @@
-var h = require('hyperdom').html;
+const hyperdom = require('hyperdom')
+var h = hyperdom.html;
 
 module.exports = function (options) {
   var inline = options.inline;
@@ -15,7 +16,7 @@ module.exports = function (options) {
     vdomOptions.contentEditable = true;
   }
 
-  return h.component(
+  return hyperdom.viewComponent(
     {
       binding: h.binding(options.binding),
 
@@ -28,12 +29,12 @@ module.exports = function (options) {
           this.editor = CKEDITOR.replace(element, options.config);
         }
 
-        this.editor.on('change', function (e) {
+        this.editor.on('change', hyperdom.refreshify(function (e) {
           if (!self.settingData) {
             self.html = e.editor.getData();
             self.binding.set(self.html);
           }
-        });
+        }));
 
         this.setHtml(this.binding.get());
       },
@@ -51,10 +52,13 @@ module.exports = function (options) {
 
       onupdate: function (element) {
         this.setHtml(this.binding.get());
+      },
+
+      render: function () {
+        return inline
+          ? h('div', vdomOptions)
+          : h('textarea', vdomOptions)
       }
     },
-    inline
-      ? h('div', vdomOptions)
-      : h('textarea', vdomOptions)
   );
 };
