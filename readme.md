@@ -28,3 +28,6 @@ var vdom = ckeditor(options);
 * `options.config` - [ckeditor config](http://docs.ckeditor.com/#!/api/CKEDITOR.config).
 * `options.inline` - [inline ckeditor](http://docs.ckeditor.com/#!/guide/dev_inline).
 * `options` - the rest of the options are passed to create the vdom element, so you can use `class` and `key` among other things.
+
+## We're Hiring!
+Featurist provides full stack, feature driven development teams. Want to join us? Check out [our career opportunities](https://www.featurist.co.uk/careers/).
